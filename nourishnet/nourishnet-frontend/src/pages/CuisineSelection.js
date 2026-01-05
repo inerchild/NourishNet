@@ -10,8 +10,9 @@ function CuisineSelection() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchData();
-  }, [dietId]);
+  fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [dietId]);
 
   const fetchData = async () => {
     try {
@@ -47,12 +48,20 @@ function CuisineSelection() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-pink-50 py-12 px-4">
       <div className="max-w-6xl mx-auto">
-        <button
-          onClick={handleBack}
-          className="mb-6 px-6 py-2 bg-white text-gray-700 rounded-lg shadow hover:shadow-md transition-all flex items-center gap-2"
-        >
-          ← Back to Diets
-        </button>
+       <div className="flex gap-4 mb-6">
+      <button
+    onClick={handleBack}
+    className="px-6 py-2 bg-white text-gray-700 rounded-lg shadow hover:shadow-md transition-all flex items-center gap-2"
+  >
+    ← Back to Diets
+  </button>
+  <button
+    onClick={() => navigate('/')}
+    className="px-6 py-2 bg-green-500 text-white rounded-lg shadow hover:shadow-md hover:bg-green-600 transition-all flex items-center gap-2"
+  >
+    🏠 Home
+  </button>
+</div>
 
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold text-gray-800 mb-2">
