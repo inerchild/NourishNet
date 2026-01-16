@@ -39,5 +39,12 @@ public class ContentService {
     
     public void deleteContent(Long id) {
         contentRepository.deleteById(id);
+    
+    public List<Content> searchContent(String searchTerm) {
+    if (searchTerm == null || searchTerm.trim().isEmpty()) {
+        return contentRepository.findAll();
     }
-}
+    return contentRepository.searchByTitleOrDescription(searchTerm.trim());
+    }
+    }
+    }
